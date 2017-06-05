@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
 
@@ -55,7 +56,7 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
-  
+
   private
   def post_params
     params.require(:post).permit(:title, :body)
